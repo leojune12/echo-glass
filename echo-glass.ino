@@ -14,7 +14,7 @@ const int YELLOW_LED_PIN = 11;
 float temp_In_C = 20.0;     // Can enter actual air temp here for maximum accuracy
 float speed_Of_Sound;       // Calculated speed of sound based on air temp
 float distance_Per_uSec;    // Distance sound travels in one microsecond
-float max_distance = 300;   // In centimeter
+float max_distance = 150;   // In centimeter
 
 float distance_1 = 0;
 float distance_2 = 0;
@@ -129,19 +129,17 @@ float read_sensor(String sensor_number, int TRIG_PIN, int ECHO_PIN) {
 
 void sound_buzzer(float distance) {
   int max_mapped_distance = 4;
-  int mapped_distance = map(distance > max_distance ? max_distance : distance, 23, max_distance, 1, max_mapped_distance);
+//  int mapped_distance = map(distance > max_distance ? max_distance : distance, 23, max_distance, 1, max_mapped_distance);
   
   if (distance <= max_distance) {
-    if (distance < 80) {
+    if (distance < 50) {
       tone(BUZZER_PIN, 3000, 200);
+    } else if (distance < 100) {
+      tone(BUZZER_PIN, 3000, 40);
+      delay(100);
     } else if (distance < 150) {
       tone(BUZZER_PIN, 3000, 40);
-    } else if (distance < 220) {
-      tone(BUZZER_PIN, 3000, 40);
-      delay(200);
-    } else if (distance < 300) {
-      tone(BUZZER_PIN, 3000, 40);
-      delay(400);
+      delay(500);
     }
   }
 }
