@@ -133,12 +133,12 @@ void sound_buzzer(float distance) {
   
   if (distance <= max_distance) {
     if (distance < 50) {
-      tone(BUZZER_PIN, 3000, 200);
+      tone(BUZZER_PIN, 2000, 200);
     } else if (distance < 100) {
-      tone(BUZZER_PIN, 3000, 40);
+      tone(BUZZER_PIN, 2000, 40);
       delay(100);
     } else if (distance < 150) {
-      tone(BUZZER_PIN, 3000, 40);
+      tone(BUZZER_PIN, 2000, 40);
       delay(500);
     }
   }
