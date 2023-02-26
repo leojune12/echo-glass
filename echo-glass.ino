@@ -8,7 +8,7 @@ const int ECHO_PIN_3 = 6;
 const int BUZZER_PIN = 8;
 const int RED_LED_PIN = 9;
 const int GREEN_LED_PIN = 10;
-const int YELLOw_LED_PIN = 11;
+const int YELLOW_LED_PIN = 11;
 
 
 float temp_In_C = 20.0;     // Can enter actual air temp here for maximum accuracy
@@ -30,12 +30,12 @@ void setup() {
   pinMode(BUZZER_PIN,OUTPUT);
   pinMode(RED_LED_PIN,OUTPUT);
   pinMode(GREEN_LED_PIN,OUTPUT);
-  pinMode(YELLOw_LED_PIN,OUTPUT);
+  pinMode(YELLOW_LED_PIN,OUTPUT);
 
   digitalWrite(BUZZER_PIN, LOW);
   digitalWrite(RED_LED_PIN, LOW);
   digitalWrite(GREEN_LED_PIN, LOW);
-  digitalWrite(YELLOw_LED_PIN, LOW);
+  digitalWrite(YELLOW_LED_PIN, LOW);
   
   // Formula to calculate speed of sound in meters/sec based on temp
   speed_Of_Sound = 331.1 +(0.606 * temp_In_C);  
@@ -59,6 +59,24 @@ void main_code() {
   distance_1 = read_sensor("1", TRIG_PIN_1, ECHO_PIN_1);
   distance_2 = read_sensor("2", TRIG_PIN_2, ECHO_PIN_2);
   distance_3 = read_sensor("3", TRIG_PIN_3, ECHO_PIN_3);
+
+  if (distance_1 <= max_distance) {
+    digitalWrite(RED_LED_PIN, HIGH);
+  } else {
+    digitalWrite(RED_LED_PIN, LOW);
+  }
+
+  if (distance_2 <= max_distance) {
+    digitalWrite(YELLOW_LED_PIN, HIGH);
+  } else {
+    digitalWrite(YELLOW_LED_PIN, LOW);
+  }
+
+  if (distance_3 <= max_distance) {
+    digitalWrite(GREEN_LED_PIN, HIGH);
+  } else {
+    digitalWrite(GREEN_LED_PIN, LOW);
+  }
 
   float distance = distance_1;
 
