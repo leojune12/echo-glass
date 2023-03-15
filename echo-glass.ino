@@ -129,7 +129,6 @@ float read_sensor(String sensor_number, int TRIG_PIN, int ECHO_PIN) {
 
 void sound_buzzer(float distance) {
   int max_mapped_distance = 4;
-//  int mapped_distance = map(distance > max_distance ? max_distance : distance, 23, max_distance, 1, max_mapped_distance);
   
   if (distance <= max_distance) {
     if (distance < 50) {
